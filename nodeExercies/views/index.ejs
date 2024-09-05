@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Index</title>
+</head>
+
+<body>
+
+    <a href="http://localhost:8000/">index File</a><br>
+    <a href="http://localhost:3000/">data File</a><br>
+
+
+    <br><br>
+    <h4>
+        <%= header %>
+    </h4>
+
+
+    <div>
+        <% data_for.forEach((data)=>{%>
+            <ul>
+                <li>
+                    <%= data %>
+                </li>
+            </ul>
+
+            <% })%>
+    </div>
+
+    <p>
+        <%= parf %>
+    </p>
+
+</body>
+
+</html>

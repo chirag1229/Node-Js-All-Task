@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>ToDo List</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <style>
+        body {
+            height: 100vh;
+            background-image: url('https://media.istockphoto.com/id/1509120920/photo/4k-defocused-particles-background.webp?b=1&s=170667a&w=0&k=20&c=9SBdLCUAR_P7uysIfIXs8dg8Vx0pwbFKkGSYidkUwtg=');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-color: rgba(0, 0, 0, 0.286);
+            background-blend-mode: hue;
+            font-family: Arial, sans-serif;
+        }
+
+        form {
+            width: 300px;
+            height: auto;
+            padding: 30px;
+            margin: auto;
+            margin-top: 20px;
+            background-color: #f7f7f7;
+            border: 1px solid #ccc;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        form input {
+            width: 250px;
+            padding: 12px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+        }
+
+        #btn-sub {
+            width: 100px !important;
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #btn-sub:hover {
+            background-color: #3e8e41;
+        }
+
+        h1 {
+            text-align: center;
+            color: white;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        h3 {
+            font-size: 25px;
+            padding-left: 10px;
+            color: #666;
+        }
+
+        .new-item {
+            width: 400px;
+            margin: auto;
+            padding: 20px;
+
+        }
+
+        .add-todo {
+            height: 80px;
+            border-radius: 5px;
+            margin-top: 8px;
+            background-color: #f7f7f7;
+            border: 1px solid #ccc;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .del {
+            display: flex;
+            align-items: center;
+        }
+
+        .del button {
+            margin-left: 10px;
+            background-color: #4CAF50;
+            color: black;
+            font-weight: 800;
+            padding: 7px 15px;
+            font-size: 19px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <form id="todo-form">
+        <input type="text" id="todo_item" placeholder="Enter todo here">
+        <br><br>
+        <input type="submit" value="submit" id="btn-sub">
+    </form>
+    <br><br>
+
+    <h1>TODO ITEMS</h1>
+    <div class="new-item">
+        <% todo_data.forEach((data, index)=> { %>
+            <div class="add-todo">
+                <div class="del">
+                    <div class="add">
+                        <h3>
+                            <%= data %>
+                        </h3>
+                    </div>
+                    <button id="update-<%= index %>"><i class="bi bi-pencil-square"></i></button>
+                    <button class="red" id="delete-<%= index %>" onclick="deleteTodo(<%= index %>)"><i
+                            class="bi bi-trash"></i></button>
+                </div>
+                <%})%>
+
+            </div>
+    </div>
+
+
+    <script>
+        const todo = document.getElementById('todo-form');
+
+        todo.addEventListener('submit', (e) => {
+            const todo_data = document.getElementById('todo_item').value;
+            (async () => {
+                await fetch('http://localhost:8000/', {
+                    method: 'POST',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ todo_item: todo_data })
+                })
+            })();
+        })
+
+        function deleteTodo(data) {
+            (async () => {
+                await fetch(`http://localhost:8000/${data}`, {
+                    method: 'DELETE'
+                });
+            })();
+
+            location.reload()
+        }
+    </script>
+
+
+</body>
+
+</html>

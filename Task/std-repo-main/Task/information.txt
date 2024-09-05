@@ -1,0 +1,31 @@
+You can use any frontend technologies like html,css,js,bootstrap,etc.
+AI tools are strictly prohibited.
+You can use google.
+
+Tasks
+
+Task1 : Firstly complete Login page
+Task2 : after it complete dashboard
+
+Good to have 
+Task3 : Analysis page
+
+Imprortant Note : 
+Try to maintain hierarchy of task and give you 100% to any task 
+move to another task after completion of one task
+
+
+Hackathon Timings:(Total duration : 6hours)
+
+you have 5 hours to complete task1 and Task2
+we will provide extra 1hour for task3(if you complete task1 and task2)
+(you can leave Hackathon after 2hours)
+
+
+Documents : 
+https://xd.adobe.com/view/8d79424c-7454-4bae-8934-07e996b7f6d3-d82a/
+
+(try to implement same UI as you given in above link, it's desktop view)
+
+for mobile view follow Mobile view folder
+
